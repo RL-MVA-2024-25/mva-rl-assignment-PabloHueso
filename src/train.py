@@ -17,15 +17,12 @@ env = TimeLimit(
 # Now is the floor is yours to implement the agent and train it.
 
 
-# You have to implement your own agent.
-# Don't modify the methods names and signatures, but you can add methods.
-# ENJOY!
 
 class ReplayBuffer:
   def __init__(self, capacity, device):
     self.capacity = int(capacity) # capacity of the buffer
     self.data = []
-    self.index = 0 # index of the next cell to be filled
+    self.index = 0 
     self.device = device
   
   def append(self, s, a, r, s_, d):
@@ -54,7 +51,7 @@ class ProjectAgent:
       'epsilon_delay_decay': 100,
       'batch_size': 810,
       'gradient_steps': 7,
-      'update_target_strategy': 'replace', # or 'ema'
+      'update_target_strategy': 'replace', 
       'update_target_freq': 900,
       'update_target_tau': 0.005,
       'criterion': torch.nn.SmoothL1Loss()}
@@ -134,7 +131,7 @@ class ProjectAgent:
     previous_val = 0
     max_episode=300
     
-    episode_return = []
+    episode_return = list()
     episode = 0
     episode_cum_reward = 0
     state, _ = env.reset()
